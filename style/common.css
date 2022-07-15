@@ -1,0 +1,32 @@
+.startMenuItem{
+  text-align:center;
+  margin:10px;
+  padding:5px;
+  background-color:silver;
+}
+#wrapper{
+  padding:0;
+  margin:0;
+}
+body{
+  margin:0;
+  padding:0;
+}
+.number{
+  font-size:25px;
+  margin:1px;
+  padding:1px;
+  background-color:silver;
+}
+#canvases{
+  width:567px;
+  height:567px;
+  position: relative;
+}
+.canvas{
+  top:100;
+  right:0;
+  bottom:0;
+  left:0;
+  position:absolute;
+}

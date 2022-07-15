@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='ja'>
+  <head>
+    <meta charset='UTF-8'>
+    <title>デジタルワーク</title>
+    <meta name='viewport' content='width=device-width,inital-scale=1'>
+    <link rel='stylesheet' href='style/common.css'>
+    <script src='src/jquery.js'></script>
+    <script src='src/main.js'></script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id='start'>
+        <div id='1thButton'>1年生</div>
+        <div>2年生</div>
+        <div>3年生</div>
+        <div>4年生</div>
+        <div>5年生</div>
+        <div>6年生</div>
+      </div>
+      <div id='1th'>
+        <div id='japanese'>こくご</div>
+        <div id='math'>さんすう</div>
+      </div>
+      <div id='question'>
+        <div class='menu'>
+          <div class='menuItem'>はじめから</div>
+          <div id='marutuke' class='menuItem'>まるつけ</div>
+          <div class='menuItem'>もどる</div>
+          <div id='next' class='menuItem'>つぎへ</div>
+        </div>
+        <div id='japanesePanel'>
+          <canvas width='567px' height='567px' id='drawCanvas' class='canvas'></canvas>
+        </div>
+        <div id='mathPanel'>
+          <div id='siki'></div>
+          <div id='mathAnswer'></div>
+          <div id='buttons'>
+            <span id='1'>1</span>
+            <span id='2'>2</span>
+            <span id='3'>3</span>
+            <span id='4'>4</span>
+            <span id='5'>5</span>
+            <span id='6'>6</span>
+            <span id='7'>7</span>
+            <span id='8'>8</span>
+            <span id='9'>9</span>
+            <span id='0'>0</span>
+            <span id='delete'>けす</span>
+          </div>
+        </div>
+      </div>
+      <div id='1thJapanese'>
+        <div id='hiragana'>ひらがな</div>
+        <div id='katakana'>かたかな</div>
+        <div id='kanzi'>かんじ</div>
+      </div>
+      <div id='1thMath'>
+        <div id='tasizan'>たしざん</div>
+        <div id='hikizan'>ひきざん</div>
+      </div>
+    </div>
+  </body>
+</html>
