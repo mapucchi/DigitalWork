@@ -14,44 +14,44 @@ function sliceArrayByNumber(array,number){
   return new Array(length).fill().map((_, i)=>array.slice(i*number,(i+1)*number));
 }
 function mathInit(){
-  $('#1').on('touchend',Push(1));
-  $('#2').on('touchend',Push(2));
-  $('#3').on('touchend',Push(3));
-  $('#4').on('touchend',Push(4));
-  $('#5').on('touchend',Push(5));
-  $('#6').on('touchend',Push(6));
-  $('#7').on('touchend',Push(7));
-  $('#8').on('touchend',Push(8));
-  $('#9').on('touchend',Push(9));
-  $('#0').on('touchend',Push(0));
-  $('#delete').on('touchend',Push('delete'));
+  $('#1').on('touchend click',Push(1));
+  $('#2').on('touchend click',Push(2));
+  $('#3').on('touchend click',Push(3));
+  $('#4').on('touchend click',Push(4));
+  $('#5').on('touchend click',Push(5));
+  $('#6').on('touchend click',Push(6));
+  $('#7').on('touchend click',Push(7));
+  $('#8').on('touchend click',Push(8));
+  $('#9').on('touchend click',Push(9));
+  $('#0').on('touchend click',Push(0));
+  $('#delete').on('touchend click',Push('delete'));
 }
 function tasizan(){
   let siki=[random(1,9),'+',random(0,9)]
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
   $('#mathAnswer').text('')
-  $('#marutuke').on('touchend',()=>{
+  $('#marutuke').on('touchend click',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
       $('#mathPanel').text('せいかい')
     }else{
       $('#mathPanel').text('ふせいかい')
     }
   })
-  $('#next').on('touchend',tasizan);
+  $('#next').on('touchend click',tasizan);
 }
 function hikizan(){
   let siki=[random(1,9),'-'];
   siki.push(random(0,siki[0]));
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
   $('#mathAnswer').text('')
-  $('#marutuke').on('touchend',()=>{
+  $('#marutuke').on('touchend click',()=>{
     if($('#mathAnswer').text()*1===siki[0]-siki[2]){
       $('#mathPanel').text('せいかい')
     }else{
       $('#mathPanel').text('ふせいかい')
     }
   })
-  $('#next').on('touchend',hikizan);
+  $('#next').on('touchend click',hikizan);
 }
 function random(min,max){return Math.floor(Math.random()*(max-min+1))+min};
 $(()=>{
@@ -60,6 +60,7 @@ $(()=>{
   let subject,selectedKana;
   let kana=['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ'];
   let lastPosition={x:null,y:null};
+  let isDrag=false;
   function image(src){
     let img=new Image();
     img.src=src;
@@ -71,58 +72,64 @@ $(()=>{
     image('./resource/'+selectedKana+'.png')
   }
   function draw(x,y){
+    if(!isDrag) {
+      return;
+    }
     ctx.lineCap='round';
     ctx.lineJoin='round';
     ctx.lineWidth=30;
     ctx.strokeStyle='black';
-	 if(lastPosition.x===null||lastPosition.y===null){
-	   ctx.moveTo(x,y);
-	 }else{
-	   ctx.moveTo(lastPosition.x,lastPosition.y);
-	 }
-	 ctx.lineTo(x,y);
-	 ctx.stroke();
-	 lastPosition.x=x;
-	 lastPosition.y=y;
+    if(lastPosition.x===null||lastPosition.y===null){
+      ctx.moveTo(x,y);
+    }else{
+      ctx.moveTo(lastPosition.x,lastPosition.y);
+    }
+    ctx.lineTo(x,y);
+    ctx.stroke();
+    lastPosition.x=x;
+    lastPosition.y=y;
   }
   function drawStart(){
+    isDrag=true;
     ctx.beginPath();
   }
   function drawEnd(){
+    isDrag=false;
     ctx.closePath();
 	 lastPosition.x=null;
 	 lastPosition.y=null;
   }
   $('#1th,#question,#1thJapanese,#1thMath').hide();
-  $('#1thButton').on('touchend',()=>{
+  $('#1thButton').on('touchend click',()=>{
     $('#1th').show();
     $('#start').hide();
   });
-  $('#japanese').on('touchend',()=>{
+  $('#japanese').on('touchend click',()=>{
     subject='Japanese';
     $('#1th').hide();
     $('#1thJapanese').show();
   });
-  $('#math').on('touchend',()=>{
+  $('#math').on('touchend click',()=>{
     subject='Math';
     $('#1th').hide();
     $('#1thMath').show();
   });
   function kokugoMarutuke(){
-    const imageData=sliceArrayByNumber(ctx.getImageData(0,0,567,567),4);
-    let Gray=imageData.filter(e=>{return e[0]===159&&e[1]===160&&1[2]===160}).length;
-    let Black=imageData.filter(e=>{return e[0]===0&&e[1]===0&&1[2]===0}).length;
+    /*const imageData=sliceArrayByNumber(ctx.getImageData(0,0,567,567).data,4);
+    let Gray=imageData.filter(e=>e[0]===159).length;
+    let Black=568**2-imageData.filter(e=>e[1]===0).length;
     console.log(Gray);
-    console.log(Black);
+    console.log(Black);*/
+    
   }
-  $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('touchend',()=>{
+  $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('touchend click',()=>{
     $('#1thJapanese,#1thMath').hide();
     $('#question').show();
     if(subject==='Japanese'){
       $('#mathPanel').hide();
-		canvas.on('touchstart',drawStart);
-      canvas.on('touchend',drawEnd);
-		canvas.on('touchmove',(e)=>{
+      canvas.on('touchstart mousedown',drawStart);
+      canvas.on('touchend mouseup',drawEnd);
+      canvas.on('touchmove mousemove',(e)=>{
         e.preventDefault();
         let rect=$(e.target).offset();
         let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
@@ -131,23 +138,23 @@ $(()=>{
         y-=rect.top;
         draw(x,y);
 		});
-      $('#marutuke').on('touchend',kokugoMarutuke);
+      $('#marutuke').on('touchend click',kokugoMarutuke);
     }else{
       $('#japanesePanel').hide();  
-      $('#1').on('touchend',Push(1));
-      $('#2').on('touchend',Push(2));
-      $('#3').on('touchend',Push(3));
-      $('#4').on('touchend',Push(4));
-      $('#5').on('touchend',Push(5));
-      $('#6').on('touchend',Push(6));
-      $('#7').on('touchend',Push(7));
-      $('#8').on('touchend',Push(8));
-      $('#9').on('touchend',Push(9));
-      $('#0').on('touchend',Push(0));
-      $('#delete').on('touchend',Push('delete'));
+      $('#1').on('touchend click',Push(1));
+      $('#2').on('touchend click',Push(2));
+      $('#3').on('touchend click',Push(3));
+      $('#4').on('touchend click',Push(4));
+      $('#5').on('touchend click',Push(5));
+      $('#6').on('touchend click',Push(6));
+      $('#7').on('touchend click',Push(7));
+      $('#8').on('touchend click',Push(8));
+      $('#9').on('touchend click',Push(9));
+      $('#0').on('touchend click',Push(0));
+      $('#delete').on('touchend click',Push('delete'));
     }
   });
-  $('#tasizan').on('touchend',tasizan);
-  $('#hikizan').on('touchend',hikizan);
-  $('#hiragana').on('touchend',hiragana);
+  $('#tasizan').on('touchend click',tasizan);
+  $('#hikizan').on('touchend click',hikizan);
+  $('#hiragana').on('touchend click',hiragana);
 });
