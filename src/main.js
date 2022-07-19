@@ -105,16 +105,16 @@ $(()=>{
 	 lastPosition.y=null;
   }
   $('#1th,#question,#1thJapanese,#1thMath').hide();
-  $('#1thButton').on('touchend click',()=>{
+  $('#1thButton').on('touchend',()=>{
     $('#1th').show();
     $('#start').hide();
   });
-  $('#japanese').on('touchend click',()=>{
+  $('#japanese').on('touchend',()=>{
     subject='Japanese';
     $('#1th').hide();
     $('#1thJapanese').show();
   });
-  $('#math').on('touchend click',()=>{
+  $('#math').on('touchend',()=>{
     subject='Math';
     $('#1th').hide();
     $('#1thMath').show();
@@ -157,11 +157,11 @@ $(()=>{
     $('#question').show();
     if(subject==='Japanese'){
       $('#mathPanel').hide();
-      canvas.on('touchstart mousedown',drawStart);
-      canvas.on('touchend mouseup',drawEnd);
-      $('#marutuke').on('touchend click',kokugoMarutuke);
-      $('#next').on('touchend click',hiragana);
-      canvas.on('touchmove mousemove',(e)=>{
+      canvas.on('touchstart',drawStart);
+      canvas.on('touchend',drawEnd);
+      $('#marutuke').on('touchend',kokugoMarutuke);
+      $('#next').on('touchend',hiragana);
+      canvas.on('touchmove',(e)=>{
         e.preventDefault();
         let rect=$(e.target).offset();
         let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
@@ -172,20 +172,20 @@ $(()=>{
       });
     }else{
       $('#japanesePanel').hide();  
-      $('#1').on('touchend click',Push(1));
-      $('#2').on('touchend click',Push(2));
-      $('#3').on('touchend click',Push(3));
-      $('#4').on('touchend click',Push(4));
-      $('#5').on('touchend click',Push(5));
-      $('#6').on('touchend click',Push(6));
-      $('#7').on('touchend click',Push(7));
-      $('#8').on('touchend click',Push(8));
-      $('#9').on('touchend click',Push(9));
-      $('#0').on('touchend click',Push(0));
-      $('#delete').on('touchend click',Push('delete'));
+      $('#1').on('touchend',Push(1));
+      $('#2').on('touchend',Push(2));
+      $('#3').on('touchend',Push(3));
+      $('#4').on('touchend',Push(4));
+      $('#5').on('touchend',Push(5));
+      $('#6').on('touchend',Push(6));
+      $('#7').on('touchend',Push(7));
+      $('#8').on('touchend',Push(8));
+      $('#9').on('touchend',Push(9));
+      $('#0').on('touchend',Push(0));
+      $('#delete').on('touchend',Push('delete'));
     }
   });
-  $('#tasizan').on('touchend click',tasizan);
-  $('#hikizan').on('touchend click',hikizan);
-  $('#hiragana').on('touchend click',hiragana);
+  $('#tasizan').on('touchend',tasizan);
+  $('#hikizan').on('touchend',hikizan);
+  $('#hiragana').on('touchend',hiragana);
 });
