@@ -161,6 +161,10 @@ $(()=>{
       canvas.on('touchend',drawEnd);
       $('#marutuke').on('touchend',kokugoMarutuke);
       $('#next').on('touchend',hiragana);
+      $('#modoru').on('touchend',()=>{
+        $('#question').hide();
+        $('#1thJapanese').show();
+      });
       canvas.on('touchmove',(e)=>{
         e.preventDefault();
         let rect=$(e.target).offset();
@@ -183,6 +187,10 @@ $(()=>{
       $('#9').on('touchend',Push(9));
       $('#0').on('touchend',Push(0));
       $('#delete').on('touchend',Push('delete'));
+      $('#modoru').on('touchend',()=>{
+        $('#question').hide();
+        $('#1thMarh').show();
+      });
     }
   });
   $('#tasizan').on('touchend',tasizan);
