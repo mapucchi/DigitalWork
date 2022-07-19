@@ -36,9 +36,11 @@ function tasizan(){
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend click',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
-      $('#mathPanel').text('せいかい')
+      $('#mathPanel').text('せいかい');
+      playAudio('resource/seikai.mp3');
     }else{
-      $('#mathPanel').text('ふせいかい')
+      $('#mathPanel').text('ふせいかい');
+      playAudio('resource/batu.mp3');
     }
   })
   $('#next').on('touchend click',tasizan);
@@ -50,9 +52,11 @@ function hikizan(){
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend click',()=>{
     if($('#mathAnswer').text()*1===siki[0]-siki[2]){
-      $('#mathPanel').text('せいかい')
+      $('#mathPanel').text('せいかい');
+      playAudio('resource/seikai.mp3');
     }else{
-      $('#mathPanel').text('ふせいかい')
+      $('#mathPanel').text('ふせいかい');
+      playAudio('resource/batu.mp3');
     }
   })
   $('#next').on('touchend click',hikizan);
