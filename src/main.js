@@ -62,7 +62,7 @@ $(()=>{
   let canvas=$('canvas');
   let ctx=canvas[0].getContext('2d');
   let subject,selectedKana;
-  let kana=['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ'];
+  let kana=['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に',',ぬ','ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も'];
   let lastPosition={x:null,y:null};
   let isDrag=false;
   function image(src){
@@ -159,6 +159,8 @@ $(()=>{
       $('#mathPanel').hide();
       canvas.on('touchstart mousedown',drawStart);
       canvas.on('touchend mouseup',drawEnd);
+      $('#marutuke').on('touchend click',kokugoMarutuke);
+      $('#next').on('touchend click',hiragana);
       canvas.on('touchmove mousemove',(e)=>{
         e.preventDefault();
         let rect=$(e.target).offset();
@@ -168,8 +170,6 @@ $(()=>{
         y-=rect.top;
         draw(x,y);
       });
-      $('#marutuke').on('touchend click',kokugoMarutuke);
-      $('#next').on('touchend click',hiragana);
     }else{
       $('#japanesePanel').hide();  
       $('#1').on('touchend click',Push(1));
