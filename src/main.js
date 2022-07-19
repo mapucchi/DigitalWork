@@ -13,6 +13,10 @@ function sliceArrayByNumber(array,number){
   const length=Math.ceil(array.length/number);
   return new Array(length).fill().map((_, i)=>array.slice(i*number,(i+1)*number));
 }
+function playAudio(src){
+  const music=new Audio(src);
+  music.play();
+}
 function mathInit(){
   $('#1').on('touchend click',Push(1));
   $('#2').on('touchend click',Push(2));
@@ -68,8 +72,9 @@ $(()=>{
   }
   function kanaSelect(){selectedKana=kana[random(0,kana.length-1)]}
   function hiragana(){
+    ctx.clearRect(0,0,567,567);
     kanaSelect();
-    image('./resource/'+selectedKana+'.png')
+    image('./resource/'+selectedKana+'.png');
   }
   function draw(x,y){
     if(!isDrag) {
@@ -120,6 +125,31 @@ $(()=>{
     let Black=568**2-imageData.filter(e=>e[1]===0).length;
     console.log(Gray);
     console.log(Black);*/
+    if(random(1,10)>2){
+      playAudio('resource/seikai.mp3');
+      ctx.beginPath();
+      ctx.lineWidth=30;
+      ctx.arc(284,284,150,0,Math.PI*2,false);
+      ctx.strokeStyle="#ff0000";
+      ctx.stroke();
+      ctx.closePath();
+    }else{
+      playAudio('resource/batu.mp3');
+      ctx.beginPath();
+      ctx.strokeStyle="#ff0000";
+      ctx.lineWidth=30;
+      ctx.moveTo(134,134);
+      ctx.lineTo(433,433);
+      ctx.stroke();
+      ctx.closePath();
+      ctx.beginPath();
+      ctx.strokeStyle="#ff0000";
+      ctx.lineWidth=30;
+      ctx.moveTo(134,433);
+      ctx.lineTo(433,134);
+      ctx.stroke();
+      ctx.closePath();
+    }
     
   }
   $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('touchend click',()=>{
@@ -137,8 +167,9 @@ $(()=>{
         let y=e.pageY||e.originalEvent.changedTouches[0].pageY
         y-=rect.top;
         draw(x,y);
-		});
+      });
       $('#marutuke').on('touchend click',kokugoMarutuke);
+      $('#next').on('touchend click',hiragana);
     }else{
       $('#japanesePanel').hide();  
       $('#1').on('touchend click',Push(1));
