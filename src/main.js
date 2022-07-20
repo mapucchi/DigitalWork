@@ -9,9 +9,6 @@ function Push(n){
     $('#mathAnswer').text(number);
   }
 }
-function sliceArrayByNumber(array,number){
-  const length=Math.ceil(array.length/number);
-  return new Array(length).fill().map((_, i)=>array.slice(i*number,(i+1)*number));
 }
 function playAudio(src){
   const music=new Audio(src);
@@ -112,11 +109,6 @@ $(()=>{
     $('#1thMath').show();
   });
   function kokugoMarutuke(){
-    /*const imageData=sliceArrayByNumber(ctx.getImageData(0,0,567,567).data,4);
-    let Gray=imageData.filter(e=>e[0]===159).length;
-    let Black=568**2-imageData.filter(e=>e[1]===0).length;
-    console.log(Gray);
-    console.log(Black);*/
     if(random(1,10)>2){
       playAudio('./resource/正解.mp3');
       image('./resource/まる.png')
