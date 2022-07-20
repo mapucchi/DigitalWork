@@ -9,7 +9,6 @@ function Push(n){
     $('#mathAnswer').text(number);
   }
 }
-}
 function playAudio(src){
   const music=new Audio(src);
   music.play();
