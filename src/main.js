@@ -114,7 +114,7 @@ $(()=>{
     const gray=imgData.filter(e=>e[0]===159).length;
     const black=imgData.filter(e=>e[0]===255).length;
     alert(gray);
-    alert(black);
+    alert(imgData[0][0]);
     /*if(black/3<gray){
       playAudio('./resource/正解.mp3');
       image('./resource/まる.png')
