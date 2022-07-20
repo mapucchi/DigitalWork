@@ -26,7 +26,6 @@ function tasizan(){
       playAudio('resource/不正解.mp3');
     }
   });
-  $('#next').on('touchend',tasizan);
 }
 function hikizan(){
   let siki=[random(1,9),'-'];
@@ -42,7 +41,6 @@ function hikizan(){
       playAudio('resource/不正解.mp3');
     }
   });
-  $('#next').on('touchend',hikizan);
 }
 function random(min,max){return Math.floor(Math.random()*(max-min+1))+min};
 $(()=>{
@@ -158,7 +156,7 @@ $(()=>{
       });
     }
   });
-  $('#tasizan').on('touchend',tasizan);
-  $('#hikizan').on('touchend',hikizan);
+  $('#tasizan').on('touchend',()=>{tasizan();$('#next').on('touchend',tasizan);});
+  $('#hikizan').on('touchend',()=>{hikizan();$('#next').on('touchend',hikizan);});
   $('#hiragana').on('touchend',hiragana);
 });
