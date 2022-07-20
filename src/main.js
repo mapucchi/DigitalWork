@@ -155,7 +155,7 @@ $(()=>{
       $('#delete').on('touchend',Push('delete'));
       $('#modoru').on('touchend',()=>{
         $('#question').hide();
-        $('#1thMarh').show();
+        $('#1thMath').show();
       });
     }
   });
