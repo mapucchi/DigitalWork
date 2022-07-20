@@ -155,8 +155,18 @@ $(()=>{
         $('#1thMath').show();
       });
     }
+    $('#hazimekara').on('touchend',()=>{
+      $('#question').hide();
+      $('#start').show();
+    });
   });
-  $('#tasizan').on('touchend',()=>{tasizan();$('#next').on('touchend',tasizan);});
-  $('#hikizan').on('touchend',()=>{hikizan();$('#next').on('touchend',hikizan);});
+  $('#tasizan').on('touchend',()=>{
+    tasizan();
+    $('#next').on('touchend',tasizan);
+  });
+  $('#hikizan').on('touchend',()=>{
+    hikizan();
+    $('#next').on('touchend',hikizan);
+  });
   $('#hiragana').on('touchend',hiragana);
 });
