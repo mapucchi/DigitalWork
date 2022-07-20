@@ -20,6 +20,11 @@ function sliceByNumber(array,number){
 function tasizan(){
   let siki=[random(0,9),'+',random(0,9)]
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
+  ctx.font = '48pt sans-serif';
+  ctx.textAlign='start'
+  ctx.textBaseline='top';
+  ctx.fillText(siki[0]+siki[2],0);
+  ctx.scale(12,12);
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
@@ -35,6 +40,11 @@ function hikizan(){
   let siki=[random(1,9),'-'];
   siki.push(random(0,siki[0]));
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
+  ctx.font = '48pt sans-serif';
+  ctx.textAlign='start'
+  ctx.textBaseline='top';
+  ctx.fillText(siki[0]-siki[2],0);
+  ctx.scale(12,12);
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]-siki[2]){
@@ -113,7 +123,7 @@ $(()=>{
     const imgData=sliceByNumber(ctx.getImageData(0,0,567,567).data,4);
     const gray=imgData.filter(e=>e[0]==159).length;
     const black=imgData.filter(e=>e[3]==255).length;
-    if(black/3<gray){
+    if(black/3>gray){
       playAudio('./resource/正解.mp3');
       image('./resource/まる.png')
     }else{
@@ -144,7 +154,6 @@ $(()=>{
         draw(x,y);
       });
     }else{
-      $('#japanesePanel').hide();  
       $('#1').on('touchend',Push(1));
       $('#2').on('touchend',Push(2));
       $('#3').on('touchend',Push(3));
