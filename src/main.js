@@ -24,10 +24,10 @@ function tasizan(){
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
       $('#mathPanel').html('<h1>せいかい</h1>');
-      playAudio('resource/seikai.mp3');
+      playAudio('resource/正解.mp3');
     }else{
       $('#mathPanel').html('<h1>ふせいかい</h1>');
-      playAudio('resource/batu.mp3');
+      playAudio('resource/不正解.mp3');
     }
   })
   $('#next').on('touchend',tasizan);
@@ -39,11 +39,11 @@ function hikizan(){
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]-siki[2]){
-      $('#mathPanel').text('せいかい');
-      playAudio('resource/seikai.mp3');
+      $('#mathPanel').html('<h1>せいかい</h1>');
+      playAudio('resource/正解.mp3');
     }else{
-      $('#mathPanel').text('ふせいかい');
-      playAudio('resource/batu.mp3');
+      $('#mathPanel').html('<h1>ふせいかい</h1>');
+      playAudio('resource/不正解.mp3');
     }
   })
   $('#next').on('touchend',hikizan);
@@ -118,29 +118,11 @@ $(()=>{
     console.log(Gray);
     console.log(Black);*/
     if(random(1,10)>2){
-      playAudio('resource/seikai.mp3');
-      ctx.beginPath();
-      ctx.lineWidth=30;
-      ctx.arc(284,284,150,0,Math.PI*2,false);
-      ctx.strokeStyle="#ff0000";
-      ctx.stroke();
-      ctx.closePath();
+      playAudio('./resource/正解.mp3');
+      image('./resource/まる.png')
     }else{
-      playAudio('resource/batu.mp3');
-      ctx.beginPath();
-      ctx.strokeStyle="#ff0000";
-      ctx.lineWidth=30;
-      ctx.moveTo(134,134);
-      ctx.lineTo(433,433);
-      ctx.stroke();
-      ctx.closePath();
-      ctx.beginPath();
-      ctx.strokeStyle="#ff0000";
-      ctx.lineWidth=30;
-      ctx.moveTo(134,433);
-      ctx.lineTo(433,134);
-      ctx.stroke();
-      ctx.closePath();
+      playAudio('./resource/不正解.mp3');
+      image('./resource/ばつ.png')
     }
     
   }
