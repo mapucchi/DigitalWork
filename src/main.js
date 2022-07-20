@@ -79,6 +79,7 @@ $(()=>{
     ctx.clearRect(0,0,567,567);
     kanaSelect();
     image('./resource/'+selectedKana+'.png');
+    playAudio('./resource/'+selectedKana+'.mp3')
   }
   function draw(x,y){
     if(!isDrag) {
