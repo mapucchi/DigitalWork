@@ -113,14 +113,13 @@ $(()=>{
     const imgData=sliceByNumber(ctx.getImageData(0,0,567,567).data,4);
     const gray=imgData.filter(e=>e[0]==159).length;
     const black=imgData.filter(e=>e[3]==255).length;
-    alert(imgData[0][3]);
-    /*if(black/3<gray){
+    if(black/3<gray){
       playAudio('./resource/正解.mp3');
       image('./resource/まる.png')
     }else{
       playAudio('./resource/不正解.mp3');
       image('./resource/ばつ.png')
-    }*/
+    }
   }
   $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('touchend click',()=>{
     $('#1thJapanese,#1thMath').hide();
