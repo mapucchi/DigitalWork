@@ -26,7 +26,7 @@ function tasizan(){
       $('#mathPanel').html('<h1>ふせいかい</h1>');
       playAudio('resource/不正解.mp3');
     }
-  })
+  });
   $('#next').on('touchend',tasizan);
 }
 function hikizan(){
@@ -42,7 +42,7 @@ function hikizan(){
       $('#mathPanel').html('<h1>ふせいかい</h1>');
       playAudio('resource/不正解.mp3');
     }
-  })
+  });
   $('#next').on('touchend',hikizan);
 }
 function random(min,max){return Math.floor(Math.random()*(max-min+1))+min};
@@ -56,7 +56,7 @@ $(()=>{
   function image(src){
     let img=new Image();
     img.src=src;
-    img.onload=()=>{ctx.drawImage(img,0,0)}
+    img.onload=()=>{ctx.drawImage(img,0,0,567,567)}
   }
   function kanaSelect(){selectedKana=kana[random(0,kana.length-1)]}
   function hiragana(){
