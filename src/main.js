@@ -112,7 +112,7 @@ $(()=>{
   function kokugoMarutuke(){
     const imgData=sliceByNumber(ctx.getImageData(0,0,567,567).data,4);
     const gray=imgData.filter(e=>e[0]===159).length;
-    const black=imgData.filter(e=>e[0]===0).length;
+    const black=imgData.filter(e=>e[0]===255).length;
     alert(gray);
     alert(black);
     /*if(black/3<gray){
