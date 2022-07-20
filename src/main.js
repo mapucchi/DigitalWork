@@ -18,7 +18,7 @@ function sliceByNumber(array,number){
   return new Array(length).fill().map((_,i)=>array.slice(i*number,(i+1)*number));
 }
 function tasizan(){
-  let siki=[random(1,9),'+',random(0,9)]
+  let siki=[random(0,9),'+',random(0,9)]
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
@@ -111,10 +111,8 @@ $(()=>{
   });
   function kokugoMarutuke(){
     const imgData=sliceByNumber(ctx.getImageData(0,0,567,567).data,4);
-    const gray=imgData.filter(e=>e[0]===159).length;
-    const black=imgData.filter(e=>e[0]===255).length;
-    alert(gray);
-    alert(imgData[0][0]);
+    const gray=imgData.filter(e=>e[0]==159).length;
+    const black=imgData.filter(e=>e[0]==0).length;
     /*if(black/3<gray){
       playAudio('./resource/正解.mp3');
       image('./resource/まる.png')
