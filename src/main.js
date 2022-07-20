@@ -17,29 +17,16 @@ function playAudio(src){
   const music=new Audio(src);
   music.play();
 }
-function mathInit(){
-  $('#1').on('touchend',Push(1));
-  $('#2').on('touchend',Push(2));
-  $('#3').on('touchend',Push(3));
-  $('#4').on('touchend',Push(4));
-  $('#5').on('touchend',Push(5));
-  $('#6').on('touchend',Push(6));
-  $('#7').on('touchend',Push(7));
-  $('#8').on('touchend',Push(8));
-  $('#9').on('touchend',Push(9));
-  $('#0').on('touchend',Push(0));
-  $('#delete').on('touchend',Push('delete'));
-}
 function tasizan(){
   let siki=[random(1,9),'+',random(0,9)]
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
-      $('#mathPanel').text('せいかい');
+      $('#mathPanel').html('<h1>せいかい</h1>');
       playAudio('resource/seikai.mp3');
     }else{
-      $('#mathPanel').text('ふせいかい');
+      $('#mathPanel').html('<h1>ふせいかい</h1>');
       playAudio('resource/batu.mp3');
     }
   })
