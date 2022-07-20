@@ -18,23 +18,23 @@ function playAudio(src){
   music.play();
 }
 function mathInit(){
-  $('#1').on('touchend click',Push(1));
-  $('#2').on('touchend click',Push(2));
-  $('#3').on('touchend click',Push(3));
-  $('#4').on('touchend click',Push(4));
-  $('#5').on('touchend click',Push(5));
-  $('#6').on('touchend click',Push(6));
-  $('#7').on('touchend click',Push(7));
-  $('#8').on('touchend click',Push(8));
-  $('#9').on('touchend click',Push(9));
-  $('#0').on('touchend click',Push(0));
-  $('#delete').on('touchend click',Push('delete'));
+  $('#1').on('touchend',Push(1));
+  $('#2').on('touchend',Push(2));
+  $('#3').on('touchend',Push(3));
+  $('#4').on('touchend',Push(4));
+  $('#5').on('touchend',Push(5));
+  $('#6').on('touchend',Push(6));
+  $('#7').on('touchend',Push(7));
+  $('#8').on('touchend',Push(8));
+  $('#9').on('touchend',Push(9));
+  $('#0').on('touchend',Push(0));
+  $('#delete').on('touchend',Push('delete'));
 }
 function tasizan(){
   let siki=[random(1,9),'+',random(0,9)]
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
   $('#mathAnswer').text('')
-  $('#marutuke').on('touchend click',()=>{
+  $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
       $('#mathPanel').text('せいかい');
       playAudio('resource/seikai.mp3');
@@ -43,14 +43,14 @@ function tasizan(){
       playAudio('resource/batu.mp3');
     }
   })
-  $('#next').on('touchend click',tasizan);
+  $('#next').on('touchend',tasizan);
 }
 function hikizan(){
   let siki=[random(1,9),'-'];
   siki.push(random(0,siki[0]));
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
   $('#mathAnswer').text('')
-  $('#marutuke').on('touchend click',()=>{
+  $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]-siki[2]){
       $('#mathPanel').text('せいかい');
       playAudio('resource/seikai.mp3');
@@ -59,7 +59,7 @@ function hikizan(){
       playAudio('resource/batu.mp3');
     }
   })
-  $('#next').on('touchend click',hikizan);
+  $('#next').on('touchend',hikizan);
 }
 function random(min,max){return Math.floor(Math.random()*(max-min+1))+min};
 $(()=>{
