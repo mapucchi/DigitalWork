@@ -123,7 +123,7 @@ $(()=>{
     const imgData=sliceByNumber(ctx.getImageData(0,0,567,567).data,4);
     const gray=imgData.filter(e=>e[0]==159).length;
     const black=imgData.filter(e=>e[3]==255).length;
-    if(black/3>gray){
+    if(black>gray){
       playAudio('./resource/正解.mp3');
       image('./resource/まる.png')
     }else{
