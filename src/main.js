@@ -104,6 +104,17 @@ $(()=>{
     lastPosition.x=null;
     lastPosition.y=null;
   }
+  $('#1').on('touchend',Push(1));
+  $('#2').on('touchend',Push(2));
+  $('#3').on('touchend',Push(3));
+  $('#4').on('touchend',Push(4));
+  $('#5').on('touchend',Push(5));
+  $('#6').on('touchend',Push(6));
+  $('#7').on('touchend',Push(7));
+  $('#8').on('touchend',Push(8));
+  $('#9').on('touchend',Push(9));
+  $('#0').on('touchend',Push(0));
+  $('#delete').on('touchend',Push('delete'));
   $('#1th,#question,#1thJapanese,#1thMath').hide();
   $('#1thButton').on('touchend',()=>{
     $('#1th').show();
@@ -154,17 +165,6 @@ $(()=>{
         draw(x,y);
       });
     }else{
-      $('#1').on('touchend',Push(1));
-      $('#2').on('touchend',Push(2));
-      $('#3').on('touchend',Push(3));
-      $('#4').on('touchend',Push(4));
-      $('#5').on('touchend',Push(5));
-      $('#6').on('touchend',Push(6));
-      $('#7').on('touchend',Push(7));
-      $('#8').on('touchend',Push(8));
-      $('#9').on('touchend',Push(9));
-      $('#0').on('touchend',Push(0));
-      $('#delete').on('touchend',Push('delete'));
       $('#modoru').on('touchend',()=>{
         $('#question').hide();
         $('#1thMath').show();
