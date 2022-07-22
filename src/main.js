@@ -20,11 +20,11 @@ function sliceByNumber(array,number){
 function tasizan(){
   let siki=[random(0,9),'+',random(0,9)]
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
-  ctx.font = '48pt sans-serif';
+  /*ctx.font = '48pt sans-serif';
   ctx.textAlign='start'
   ctx.textBaseline='top';
   ctx.fillText(siki[0]+siki[2],0);
-  ctx.scale(12,12);
+  ctx.scale(12,12);*/
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]+siki[2]){
@@ -40,11 +40,11 @@ function hikizan(){
   let siki=[random(1,9),'-'];
   siki.push(random(0,siki[0]));
   $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
-  ctx.font = '48pt sans-serif';
+  /*ctx.font = '48pt sans-serif';
   ctx.textAlign='start'
   ctx.textBaseline='top';
   ctx.fillText(siki[0]-siki[2],0);
-  ctx.scale(12,12);
+  ctx.scale(12,12);*/
   $('#mathAnswer').text('')
   $('#marutuke').on('touchend',()=>{
     if($('#mathAnswer').text()*1===siki[0]-siki[2]){
