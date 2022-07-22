@@ -64,6 +64,7 @@ $(()=>{
   let kana=['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に',',ぬ','ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'];
   let lastPosition={x:null,y:null};
   let isDrag=false;
+  let isSelected=false;
   function image(src){
     let img=new Image();
     img.src=src;
@@ -146,33 +147,39 @@ $(()=>{
     $('#1thJapanese,#1thMath').hide();
     $('#question').show();
     if(subject==='Japanese'){
-      $('#mathPanel').hide();
-      canvas.on('touchstart',drawStart);
-      canvas.on('touchend',drawEnd);
-      $('#marutuke').on('touchend',kokugoMarutuke);
-      $('#next').on('touchend',hiragana);
-      $('#modoru').on('touchend',()=>{
-        $('#question').hide();
-        $('#1thJapanese').show();
-      });
-      canvas.on('touchmove',(e)=>{
-        e.preventDefault();
-        let rect=$(e.target).offset();
-        let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
-        x-=rect.left;
-        let y=e.pageY||e.originalEvent.changedTouches[0].pageY;
-        y-=rect.top;
-        draw(x,y);
-      });
-      $('#yarinaosi').on('touchend',()=>{
-        ctx.clearRect(0,0,567,567);
-        image('./resource/'+selectedKana+'.png');
-      })
+      if(isSelected){
+        isSelected=true;
+        $('#mathPanel').hide();
+        canvas.on('touchstart',drawStart);
+        canvas.on('touchend',drawEnd);
+        $('#marutuke').on('touchend',kokugoMarutuke);
+        $('#next').on('touchend',hiragana);
+        $('#modoru').on('touchend',()=>{
+          $('#question').hide();
+          $('#1thJapanese').show();
+        });
+        canvas.on('touchmove',(e)=>{
+          e.preventDefault();
+          let rect=$(e.target).offset();
+          let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
+          x-=rect.left;
+          let y=e.pageY||e.originalEvent.changedTouches[0].pageY;
+          y-=rect.top;
+          draw(x,y);
+        });
+        $('#yarinaosi').on('touchend',()=>{
+          ctx.clearRect(0,0,567,567);
+          image('./resource/'+selectedKana+'.png');
+        });
+      }
     }else{
-      $('#modoru').on('touchend',()=>{
-        $('#question').hide();
-        $('#1thMath').show();
-      });
+      if(isSelected){
+        isSelected=true;
+        $('#modoru').on('touchend',()=>{
+          $('#question').hide();
+          $('#1thMath').show();
+        });
+      }
     }
     $('#hazimekara').on('touchend',()=>{
       $('#question').hide();
