@@ -164,6 +164,10 @@ $(()=>{
         y-=rect.top;
         draw(x,y);
       });
+      $('#yarinaosi').on('touchend',()=>{
+        ctx.clearRect(0,0,567,567);
+        image('./resource/'+selectedKana+'.png');
+      })
     }else{
       $('#modoru').on('touchend',()=>{
         $('#question').hide();
