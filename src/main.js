@@ -17,51 +17,13 @@ function sliceByNumber(array,number){
   const length=Math.ceil(array.length/number);
   return new Array(length).fill().map((_,i)=>array.slice(i*number,(i+1)*number));
 }
-function tasizan(){
-  let siki=[random(0,9),'+',random(0,9)]
-  $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
-  /*ctx.font = '48pt sans-serif';
-  ctx.textAlign='start'
-  ctx.textBaseline='top';
-  ctx.fillText(siki[0]+siki[2],0);
-  ctx.scale(12,12);*/
-  $('#mathAnswer').text('')
-  $('#marutuke').on('touchend',()=>{
-    if($('#mathAnswer').text()*1===siki[0]+siki[2]){
-      $('#mathPanel').html('<h1>せいかい</h1>');
-      playAudio('resource/正解.mp3');
-    }else{
-      $('#mathPanel').html('<h1>ふせいかい</h1>');
-      playAudio('resource/不正解.mp3');
-    }
-  });
-}
-function hikizan(){
-  let siki=[random(1,9),'-'];
-  siki.push(random(0,siki[0]));
-  $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
-  /*ctx.font = '48pt sans-serif';
-  ctx.textAlign='start'
-  ctx.textBaseline='top';
-  ctx.fillText(siki[0]-siki[2],0);
-  ctx.scale(12,12);*/
-  $('#mathAnswer').text('')
-  $('#marutuke').on('touchend',()=>{
-    if($('#mathAnswer').text()*1===siki[0]-siki[2]){
-      $('#mathPanel').html('<h1>せいかい</h1>');
-      playAudio('resource/正解.mp3');
-    }else{
-      $('#mathPanel').html('<h1>ふせいかい</h1>');
-      playAudio('resource/不正解.mp3');
-    }
-  });
-}
+
 function random(min,max){return Math.floor(Math.random()*(max-min+1))+min};
 $(()=>{
   let canvas=$('canvas');
   let ctx=canvas[0].getContext('2d');
   let subject,selectedKana;
-  let kana=['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に',',ぬ','ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん'];
+  let kana=['あ','え','か','き','す','せ','た','と','な','ぬ','ふ','ほ','み','む','や','ゆ','ら','り','わ','を'];
   let lastPosition={x:null,y:null};
   let isDrag=false;
   let isSelected=false;
@@ -74,8 +36,10 @@ $(()=>{
   function hiragana(){
     ctx.clearRect(0,0,567,567);
     kanaSelect();
-    image('./resource/'+selectedKana+'.png');
-    playAudio('./resource/'+selectedKana+'.mp3')
+    image('./resource/hiragana_base/'+selectedKana+'.png');
+    $('#kana').attr('src','./resource/hiragana_junban/'+selectedKana+'.png');
+    $('#kakijun').attr('src','./resource/hiragana_junban/'+selectedKana+'_j.png');
+    playAudio('./resource/sound/'+selectedKana+'.mp3');
   }
   function draw(x,y){
     if(!isDrag) {
@@ -105,28 +69,57 @@ $(()=>{
     lastPosition.x=null;
     lastPosition.y=null;
   }
-  $('#1').on('touchend',Push(1));
-  $('#2').on('touchend',Push(2));
-  $('#3').on('touchend',Push(3));
-  $('#4').on('touchend',Push(4));
-  $('#5').on('touchend',Push(5));
-  $('#6').on('touchend',Push(6));
-  $('#7').on('touchend',Push(7));
-  $('#8').on('touchend',Push(8));
-  $('#9').on('touchend',Push(9));
-  $('#0').on('touchend',Push(0));
-  $('#delete').on('touchend',Push('delete'));
+  function tasizan(){
+    let siki=[random(0,9),'+',random(0,9)]
+    $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
+    $('#mathAnswer').text('')
+    $('#marutuke').on('mouseup',()=>{
+      if($('#mathAnswer').text()*1===siki[0]+siki[2]){
+        $('#mathPanel').html('<h1>せいかい</h1>');
+        playAudio('resource/sound/正解.mp3');
+      }else{
+        $('#mathPanel').html('<h1>ふせいかい</h1>');
+        playAudio('resource/sound/不正解.mp3');
+      }
+    });
+  }
+  function hikizan(){
+    let siki=[random(1,9),'-'];
+    siki.push(random(0,siki[0]));
+    $('#siki').text(siki[0]+siki[1]+siki[2]+'は？');
+    $('#mathAnswer').text('')
+    $('#marutuke').on('mouseup',()=>{
+      if($('#mathAnswer').text()*1===siki[0]-siki[2]){
+        $('#mathPanel').html('<h1>せいかい</h1>');
+        playAudio('resource/正解.mp3');
+      }else{
+        $('#mathPanel').html('<h1>ふせいかい</h1>');
+        playAudio('resource/不正解.mp3');
+      }
+    });
+  }
+  $('#1').on('mouseup',Push(1));
+  $('#2').on('mouseup',Push(2));
+  $('#3').on('mouseup',Push(3));
+  $('#4').on('mouseup',Push(4));
+  $('#5').on('mouseup',Push(5));
+  $('#6').on('mouseup',Push(6));
+  $('#7').on('mouseup',Push(7));
+  $('#8').on('mouseup',Push(8));
+  $('#9').on('mouseup',Push(9));
+  $('#0').on('mouseup',Push(0));
+  $('#delete').on('mouseup',Push('delete'));
   $('#1th,#question,#1thJapanese,#1thMath').hide();
-  $('#1thButton').on('touchend',()=>{
+  $('#1thButton').on('mouseup',()=>{
     $('#1th').show();
     $('#start').hide();
   });
-  $('#japanese').on('touchend',()=>{
+  $('#japanese').on('mouseup',()=>{
     subject='Japanese';
     $('#1th').hide();
     $('#1thJapanese').show();
   });
-  $('#math').on('touchend',()=>{
+  $('#math').on('mouseup',()=>{
     subject='Math';
     $('#1th').hide();
     $('#1thMath').show();
@@ -136,29 +129,29 @@ $(()=>{
     const gray=imgData.filter(e=>e[0]==159).length;
     const black=imgData.filter(e=>e[3]==255).length;
     if(black>gray){
-      playAudio('./resource/正解.mp3');
+      playAudio('./resource/sound/正解.mp3');
       image('./resource/まる.png')
     }else{
-      playAudio('./resource/不正解.mp3');
+      playAudio('./resource/sound/不正解.mp3');
       image('./resource/ばつ.png')
     }
   }
-  $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('touchend click',()=>{
+  $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('mouseup',()=>{
     $('#1thJapanese,#1thMath').hide();
     $('#question').show();
     if(subject==='Japanese'){
-      if(isSelected){
+      if(!isSelected){
         isSelected=true;
         $('#mathPanel').hide();
-        canvas.on('touchstart',drawStart);
-        canvas.on('touchend',drawEnd);
-        $('#marutuke').on('touchend',kokugoMarutuke);
-        $('#next').on('touchend',hiragana);
-        $('#modoru').on('touchend',()=>{
+        canvas.on('mousedown',drawStart);
+        canvas.on('mouseup',drawEnd);
+        $('#marutuke').on('mouseup',kokugoMarutuke);
+        $('#next').on('mouseup',hiragana);
+        $('#modoru').on('mouseup',()=>{
           $('#question').hide();
           $('#1thJapanese').show();
         });
-        canvas.on('touchmove',(e)=>{
+        canvas.on('mousemove',(e)=>{
           e.preventDefault();
           let rect=$(e.target).offset();
           let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
@@ -167,32 +160,48 @@ $(()=>{
           y-=rect.top;
           draw(x,y);
         });
-        $('#yarinaosi').on('touchend',()=>{
+        $('#yarinaosi').on('mouseup',()=>{
           ctx.clearRect(0,0,567,567);
-          image('./resource/'+selectedKana+'.png');
+          image('./resource/hiragana_base/'+selectedKana+'.png');
         });
       }
     }else{
-      if(isSelected){
+      if(!isSelected){
         isSelected=true;
-        $('#modoru').on('touchend',()=>{
+        $('#modoru').on('mouseup',()=>{
           $('#question').hide();
           $('#1thMath').show();
         });
+        canvas.on('mousedown',drawStart);
+        canvas.on('mouseup',drawEnd);
+        $('#marutuke').on('mouseup',kokugoMarutuke);
+        $('#next').on('mouseup',hiragana);
+        canvas.on('mousemove',(e)=>{
+          e.preventDefault();
+          let rect=$(e.target).offset();
+          let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
+          x-=rect.left;
+          let y=e.pageY||e.originalEvent.changedTouches[0].pageY;
+          y-=rect.top;
+          draw(x,y);
+        });
+        $('#yarinaosi').on('mouseup',()=>{
+          ctx.clearRect(0,0,567,567);
+        });
       }
     }
-    $('#hazimekara').on('touchend',()=>{
+    $('#hazimekara').on('mouseup',()=>{
       $('#question').hide();
       $('#start').show();
     });
   });
-  $('#tasizan').on('touchend',()=>{
+  $('#tasizan').on('mouseup',()=>{
     tasizan();
-    $('#next').on('touchend',tasizan);
+    $('#next').on('mouseup',tasizan);
   });
-  $('#hikizan').on('touchend',()=>{
+  $('#hikizan').on('mouseup',()=>{
     hikizan();
-    $('#next').on('touchend',hikizan);
+    $('#next').on('mouseup',hikizan);
   });
-  $('#hiragana').on('touchend',hiragana);
+  $('#hiragana').on('mouseup',hiragana);
 });
