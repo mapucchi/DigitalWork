@@ -13,11 +13,10 @@ function playAudio(src){
   const music=new Audio(src);
   music.play();
 }
-function sliceByNumber(array,number){
-  const length=Math.ceil(array.length/number);
-  return new Array(length).fill().map((_,i)=>array.slice(i*number,(i+1)*number));
-}
-
+  function sliceByNumber(array,number){
+    const length=Math.ceil(array.length/number);
+    return new Array(length).fill().map((_,i)=>array.slice(i*number,(i+1)*number));
+  }
 function random(min,max){return Math.floor(Math.random()*(max-min+1))+min};
 $(()=>{
   let canvas=$('canvas');
@@ -39,6 +38,14 @@ $(()=>{
     image('./resource/hiragana_base/'+selectedKana+'.png');
     $('#kana').attr('src','./resource/hiragana_junban/'+selectedKana+'.png');
     $('#kakijun').attr('src','./resource/hiragana_junban/'+selectedKana+'_j.png');
+    playAudio('./resource/sound/'+selectedKana+'.mp3');
+  }
+  function katakana(){
+    ctx.clearRect(0,0,567,567);
+    kanaSelect();
+    image('./resource/katakana_base/'+selectedKana+'.png');
+    $('#kana').attr('src','./resource/katakana_junban/'+selectedKana+'.png');
+    $('#kakijun').attr('src','./resource/katakana_junban/'+selectedKana+'_j.png');
     playAudio('./resource/sound/'+selectedKana+'.mp3');
   }
   function draw(x,y){
@@ -136,7 +143,7 @@ $(()=>{
       image('./resource/ばつ.png')
     }
   }
-  $('#hiragana,#katakana,#kanzi,#tasizan,#hikizan').on('mouseup',()=>{
+  $('#hiragana,#katakana,#tasizan,#hikizan').on('mouseup',()=>{
     $('#1thJapanese,#1thMath').hide();
     $('#question').show();
     if(subject==='Japanese'){
@@ -146,23 +153,18 @@ $(()=>{
         canvas.on('mousedown',drawStart);
         canvas.on('mouseup',drawEnd);
         $('#marutuke').on('mouseup',kokugoMarutuke);
-        $('#next').on('mouseup',hiragana);
         $('#modoru').on('mouseup',()=>{
           $('#question').hide();
           $('#1thJapanese').show();
         });
         canvas.on('mousemove',(e)=>{
-          e.preventDefault();
+          e.preventdefault();
           let rect=$(e.target).offset();
-          let x=e.pageX||e.originalEvent.changedTouches[0].pageX;
+          let x=e.pagex||e.originalevent.changedtouches[0].pagex;
           x-=rect.left;
-          let y=e.pageY||e.originalEvent.changedTouches[0].pageY;
+          let y=e.pagey||e.originalevent.changedtouches[0].pagey;
           y-=rect.top;
           draw(x,y);
-        });
-        $('#yarinaosi').on('mouseup',()=>{
-          ctx.clearRect(0,0,567,567);
-          image('./resource/hiragana_base/'+selectedKana+'.png');
         });
       }
     }else{
@@ -175,7 +177,6 @@ $(()=>{
         canvas.on('mousedown',drawStart);
         canvas.on('mouseup',drawEnd);
         $('#marutuke').on('mouseup',kokugoMarutuke);
-        $('#next').on('mouseup',hiragana);
         canvas.on('mousemove',(e)=>{
           e.preventDefault();
           let rect=$(e.target).offset();
@@ -197,11 +198,22 @@ $(()=>{
   });
   $('#tasizan').on('mouseup',()=>{
     tasizan();
+    $('#next').off();
     $('#next').on('mouseup',tasizan);
   });
   $('#hikizan').on('mouseup',()=>{
     hikizan();
+    $('#next').off();
     $('#next').on('mouseup',hikizan);
   });
-  $('#hiragana').on('mouseup',hiragana);
+  $('#hiragana').on('mouseup',()=>{
+    hiragana();
+    $('#next').off();
+    $('#next').on('mouseup',hiragana);
+  });
+  $('#katakana').on('mouseup',()=>{
+    katakana();
+    $('#next').off();
+    $('#next').on('mouseup',katakana);
+  })
 });

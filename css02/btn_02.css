@@ -1,0 +1,19 @@
+.btn-circle-border-simple {
+  display: inline-block;
+  text-decoration: none;
+  color: #668ad8;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  border: solid 2px #668ad8;
+  text-align: center;
+  overflow: hidden;
+  font-size: 40px;	/*文字サイズ*/
+  font-weight: bold;
+  transition: .4s;
+}
+
+.btn-circle-border-simple:hover {
+  background: #b3e1ff;
+}
