@@ -11,7 +11,7 @@ body {
 	padding: 0px;
 	color: #666;	/*全体の文字色*/
 	font-family: "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
-	font-size: 25px;	/*文字サイズ*/
+	font-size: 15px;	/*文字サイズ*/
 	line-height: 2;		/*行間*/
 	background: #ffde00 url(../images/bg_s.png) center top;	/*背景色、背景画像の読み込み（古いブラウザ用）*/
 	background: #ffde00 url(../images/bg02.png) center top/100%;	/*同上。背景画像サイズを50%(100px)に指定。*/
@@ -19,7 +19,7 @@ body {
 	/*background: #ffde00 url(../images/bg02.png) repeat center top/100%;	同上。背景画像サイズを50%(100px)に指定。*/
 	-webkit-text-size-adjust: none;
 }
-h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form,textarea,input {margin: 0px;padding: 0px;font-size: 100%;font-weight: normal;}
+h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form,textarea,input {margin: 0px;padding: 0px;font-size: 80%;font-weight: normal;}
 ul {list-style-type: none;}
 ol {padding-left: 40px;padding-bottom: 15px;}
 img {border: none;max-width: 100%;height: auto;vertical-align: middle;}
@@ -49,7 +49,7 @@ a:hover {
 ---------------------------------------------------------------------------*/
 /*ヘッダーブロック*/
 header {
-	height: 180px;	/*高さ*/
+	height: 50px;	/*高さ*/
 	position: relative;
 }
 /*ロゴ画像（※logo.cssにもロゴの設定があります）*/
@@ -60,7 +60,7 @@ header {
 	left: 1%;	/*ヘッダーブロックに対して左から1%の場所に配置（※トップページ以外）*/
 	bottom: -30px;	/*ヘッダーブロックに対して下から-30pxの場所に配置（※トップページ以外）*/
 	background: #0057ff;	/*背景色*/
-	border-radius: 50%;		/*角丸のサイズ*/
+	border-radius: 5px;		/*角丸のサイズ*/
 	transform: none;	/*回転する角度のリセット（※トップページ以外）*/
 	border: 10px solid #fff;	/*枠線の幅、線種、色*/
 	box-shadow: 2px 3px 8px rgba(0,0,0,0.3);	/*ボックスの影。右に、下に、広げる幅、0,0,0は黒の事で0.3が透明度30%の事。*/
@@ -74,7 +74,7 @@ header {
 	overflow: hidden;
 	position: absolute;
 	right: 3%;		/*ヘッダーブロックに対して右から3%の場所に配置*/
-	bottom: 0px;	/*ヘッダーブロックに対して下から0pxの場所に配置*/
+	bottom: -30px;	/*ヘッダーブロックに対して下から0pxの場所に配置*/
 	width: 77%;		/*ブロック幅*/
 }
 /*メニュー１個あたりの設定*/
@@ -125,7 +125,7 @@ header {
 	overflow: hidden;
 	border-radius: 10px 10px 0px 0px;	/*角丸のサイズ。左上、右上、右下、左下への順番。*/
 	background: #fff;	/*背景色*/
-	padding: 3% 3% 0;	/*ボックス内の余白。上、左右、下。*/
+	padding: 0 3% 0;	/*ボックス内の余白。上、左右、下。*/
 }
 
 /*メインコンテンツ
@@ -134,7 +134,7 @@ header {
 	overflow: hidden;
 	float: right;	/*左に回り込み*/
 	width: 70%;		/*幅*/
-	padding-top: 3%;	/*上に空ける余白*/
+	padding-top: 1%;	/*上に空ける余白*/
 }
 /*メインコンテンツのh2タグの設定*/
 #main h2 {
