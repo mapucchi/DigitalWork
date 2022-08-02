@@ -13,8 +13,10 @@ body {
 	font-family: "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
 	font-size: 25px;	/*文字サイズ*/
 	line-height: 2;		/*行間*/
-	background: #ffde00 url(../images/bg_s.png) repeat center top;	/*背景色、背景画像の読み込み（古いブラウザ用）*/
-	background: #ffde00 url(../images/bg02.png) repeat center top/100%;	/*同上。背景画像サイズを50%(100px)に指定。*/
+	background: #ffde00 url(../images/bg_s.png) center top;	/*背景色、背景画像の読み込み（古いブラウザ用）*/
+	background: #ffde00 url(../images/bg02.png) center top/100%;	/*同上。背景画像サイズを50%(100px)に指定。*/
+	/*background: #ffde00 url(../images/bg_s.png) repeat center top;	背景色、背景画像の読み込み（古いブラウザ用）*/
+	/*background: #ffde00 url(../images/bg02.png) repeat center top/100%;	同上。背景画像サイズを50%(100px)に指定。*/
 	-webkit-text-size-adjust: none;
 }
 h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form,textarea,input {margin: 0px;padding: 0px;font-size: 100%;font-weight: normal;}
@@ -53,7 +55,7 @@ header {
 /*ロゴ画像（※logo.cssにもロゴの設定があります）*/
 #logo {
 	z-index: 1;
-	width: 20%;	/*ロゴ画像の幅（※トップページ以外）*/
+	width: 15%;	/*ロゴ画像の幅（※トップページ以外）*/
 	position: absolute;
 	left: 1%;	/*ヘッダーブロックに対して左から1%の場所に配置（※トップページ以外）*/
 	bottom: -30px;	/*ヘッダーブロックに対して下から-30pxの場所に配置（※トップページ以外）*/
@@ -73,7 +75,7 @@ header {
 	position: absolute;
 	right: 3%;		/*ヘッダーブロックに対して右から3%の場所に配置*/
 	bottom: 0px;	/*ヘッダーブロックに対して下から0pxの場所に配置*/
-	width: 72%;		/*ブロック幅*/
+	width: 77%;		/*ブロック幅*/
 }
 /*メニュー１個あたりの設定*/
 #menubar li {
@@ -131,7 +133,7 @@ header {
 #main {
 	overflow: hidden;
 	float: right;	/*左に回り込み*/
-	width: 60%;		/*幅*/
+	width: 70%;		/*幅*/
 	padding-top: 3%;	/*上に空ける余白*/
 }
 /*メインコンテンツのh2タグの設定*/
@@ -197,7 +199,7 @@ header {
 ---------------------------------------------------------------------------*/
 #sub {
 	float: rleft;	/*右に回り込み*/
-	width: 37%;		/*幅*/
+	width: 27%;		/*幅*/
 	padding-top: 3%;	/*上に空ける余白*/
 }
 /*subコンテンツ内のh2タグ設定*/
