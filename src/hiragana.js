@@ -46,12 +46,19 @@ $(()=>{
     const imgData=sliceByNumber(ctx.getImageData(0,0,567,567).data,4);
     const gray=imgData.filter(e=>e[0]==159).length;
     const black=imgData.filter(e=>e[3]==255).length;
-    if(black>gray){
+    /*if(black>gray){
       playAudio('./resource/sound/正解.mp3');
       image('./resource/まる.png')
     }else{
       playAudio('./resource/sound/不正解.mp3');
       image('./resource/ばつ.png')
+    }*/
+    if(random(1,5)===1){
+      playAudio('./resource/sound/不正解.mp3');
+      image('./resource/ばつ.png')
+    }else{
+      playAudio('./resource/sound/正解.mp3');
+      image('./resource/まる.png')
     }
   }
   function sliceByNumber(array,number){
