@@ -81,6 +81,7 @@ $(()=>{
     ctx.clearRect(0,0,567,567);
     image('./resource/hiragana_base/'+selectedKana+'.png');
   })
+  $('#next').on('touchend',hiragana);
   hiragana();
   document.addEventListener('touchmove',disableScroll,{passive:false});
 })
