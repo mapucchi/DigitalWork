@@ -5,6 +5,9 @@ $(()=>{
   let kana=['あ','え','か','き','す','せ','た','と','な','ぬ','ふ','ほ','み','む','や','ゆ','ら','り','わ','を'];
   let lastPosition={x:null,y:null};
   let isDrag=false;
+  function disableScroll(e){
+    e.preventDefault();
+  }
   function image(src){
     let img=new Image();
     img.src=src;
@@ -79,4 +82,5 @@ $(()=>{
     image('./resource/hiragana_base/'+selectedKana+'.png');
   })
   hiragana();
+  document.addEventListener('touchmove',disableScroll,{passive:false});
 })
