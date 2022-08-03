@@ -29,12 +29,12 @@ iframe {width: 100%;}
 /*リンク（全般）設定
 ---------------------------------------------------------------------------*/
 a {
-	color: #666;		/*リンクテキストの色*/
+	color: #fff;		/*リンクテキストの色*/
 	transition: 0.5s;	/*同上*/
 	text-decoration: none;
 }
 a:hover {
-	color: #0057ff;			/*マウスオン時の文字色*/
+	color: #fff;			/*マウスオン時の文字色*/
 	text-decoration: none;	/*マウスオン時に下線を消す設定。残したいならこの１行削除。*/
 }
 
@@ -108,7 +108,7 @@ header {
 	text-shadow: none;
 	font-size: 10px;	/*文字サイズ*/
 	letter-spacing: 0.2em;	/*文字間隔を少し広く*/
-	color: #ffde00;		/*文字色*/
+	color: #fff;		/*文字色*/
 }
 /*スマホ用メニューを表示させない*/
 #menubar-s {
@@ -182,7 +182,7 @@ header {
 	border: 2px solid #0057ff;	/*線の幅、線種、色*/
 	border-radius: 30px;	/*角丸のサイズ*/
 	background: #fff;		/*背景色*/
-	color: #0057ff;			/*文字色*/
+	color: #fff;			/*文字色*/
 	position: relative;
 }
 /*メインコンテンツの段落タグ設定*/
