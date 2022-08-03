@@ -31,6 +31,7 @@ iframe {width: 100%;}
 a {
 	color: #666;		/*リンクテキストの色*/
 	transition: 0.5s;	/*同上*/
+	text-decoration: none;
 }
 a:hover {
 	color: #0057ff;			/*マウスオン時の文字色*/
@@ -98,7 +99,7 @@ header {
 #menubar li a:hover, #menubar li.current a,
 #menubar-s li a:hover, #menubar-s li.current a {
 	background: #fff;	/*背景色*/
-	color: #666;		/*文字色*/
+	color: #FFF;		/*文字色*/
 }
 /*装飾文字（※800px以下の小さな端末#menubar-sも共通）*/
 #menubar li a span,
